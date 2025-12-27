@@ -1,38 +1,120 @@
-.App {
+body {
+  font-family: 'Press Start 2P', sans-serif;
+  background: #f0f0f0;
+  color: #333;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container, .game-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Menu Styles */
+.menu-buttons {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.join-group {
+  display: flex;
+  gap: 10px;
+}
+
+input {
+  padding: 10px;
+  font-size: 16px;
+  width: 100%;
+}
+
+/* Silhouette Magic */
+.silhouette {
+  width: 200px;
+  height: 200px;
+  filter: brightness(0);
+  transition: filter 0.3s ease;
+  image-rendering: pixelated;
+}
+
+.revealed {
+  width: 200px;
+  height: 200px;
+  filter: brightness(1);
+  image-rendering: pixelated;
+  animation: pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Options Grid */
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+button {
+  padding: 15px;
+  font-size: 16px;
+  cursor: pointer;
+  background: #3b4cca;
   color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background 0.3s ease;
 }
 
-.App-link {
-  color: #61dafb;
+button:hover {
+  background: #2a3b9e;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}
+
+.correct-btn {
+  background: #4caf50 !important;
+}
+
+/* Scoreboard */
+.scoreboard {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.score.update {
+  color: #4caf50;
+  animation: pulse 1s infinite;
+}
+
+/* Player List */
+.player-list {
+  margin: 20px 0;
+}
+
+.player-card {
+  background: #f0f0f0;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+}
+
+/* Animations */
+@keyframes pop {
+  0% { transform: scale(0.8); }
+  100% { transform: scale(1.1); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
 }
